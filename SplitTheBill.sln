@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitTheBill.Library", "SplitTheBill.Library\SplitTheBill.Library.csproj", "{8C92E009-9010-405F-8E35-5A310C5A8EDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitTheBill.Tests", "SplitTheBill.Tests\SplitTheBill.Tests.csproj", "{3A6121D2-9848-4EA5-9D7E-ACD4B6BD7028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{8C92E009-9010-405F-8E35-5A310C5A8EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C92E009-9010-405F-8E35-5A310C5A8EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C92E009-9010-405F-8E35-5A310C5A8EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6121D2-9848-4EA5-9D7E-ACD4B6BD7028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6121D2-9848-4EA5-9D7E-ACD4B6BD7028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6121D2-9848-4EA5-9D7E-ACD4B6BD7028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6121D2-9848-4EA5-9D7E-ACD4B6BD7028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
