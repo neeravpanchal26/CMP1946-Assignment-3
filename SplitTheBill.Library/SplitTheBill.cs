@@ -46,4 +46,26 @@ public class SplitTheBill
 
         return tipAmounts;
     }
+    public decimal CalculateTipPerPerson(decimal totalPrice, int numberOfPatrons, float tipPercentage)
+    {
+        if (totalPrice <= 0)
+        {
+            throw new ArgumentException("Total price must be greater than zero.", nameof(totalPrice));
+        }
+
+        if (numberOfPatrons <= 0)
+        {
+            throw new ArgumentException("Number of patrons must be greater than zero.", nameof(numberOfPatrons));
+        }
+
+        if (tipPercentage < 0 || tipPercentage > 100)
+        {
+            throw new ArgumentException("Tip percentage must be between 0 and 100.", nameof(tipPercentage));
+        }
+
+        decimal totalTipAmount = totalPrice * (decimal)(tipPercentage / 100);
+        decimal tipPerPerson = totalTipAmount / numberOfPatrons;
+
+        return tipPerPerson;
+    }
 }
