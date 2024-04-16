@@ -89,4 +89,62 @@ public class SplitTheBillTests
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(() => splitter.CalculateTip(mealCosts, tipPercentage));
     }
+    [TestMethod]
+    public void CalculateTipPerPerson_ValidInput_ReturnsCorrectTip()
+    {
+        // Arrange
+        decimal totalPrice = 100.00m;
+        int numberOfPatrons = 5;
+        float tipPercentage = 15;
+        SplitTheBill splitter = new SplitTheBill();
+
+        // Act
+        decimal tipPerPerson = splitter.CalculateTipPerPerson(totalPrice, numberOfPatrons, tipPercentage);
+
+        // Assert
+        decimal expectedTipPerPerson = 3.00m;
+        Assert.AreEqual(expectedTipPerPerson, tipPerPerson);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void CalculateTipPerPerson_TotalPriceZero_ThrowsArgumentException()
+    {
+        // Arrange
+        decimal totalPrice = 0;
+        int numberOfPatrons = 5;
+        float tipPercentage = 15;
+        SplitTheBill splitter = new SplitTheBill();
+
+        // Act
+        decimal tipPerPerson = splitter.CalculateTipPerPerson(totalPrice, numberOfPatrons, tipPercentage);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void CalculateTipPerPerson_NumberOfPatronsZero_ThrowsArgumentException()
+    {
+        // Arrange
+        decimal totalPrice = 100.00m;
+        int numberOfPatrons = 0;
+        float tipPercentage = 15;
+        SplitTheBill splitter = new SplitTheBill();
+
+        // Act
+        decimal tipPerPerson = splitter.CalculateTipPerPerson(totalPrice, numberOfPatrons, tipPercentage);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void CalculateTipPerPerson_InvalidTipPercentage_ThrowsArgumentException()
+    {
+        // Arrange
+        decimal totalPrice = 100.00m;
+        int numberOfPatrons = 5;
+        float tipPercentage = -10;
+        SplitTheBill splitter = new SplitTheBill();
+
+        // Act
+        decimal tipPerPerson = splitter.CalculateTipPerPerson(totalPrice, numberOfPatrons, tipPercentage);
+    }
 }
