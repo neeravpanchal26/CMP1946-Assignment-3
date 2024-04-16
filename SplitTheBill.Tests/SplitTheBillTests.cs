@@ -45,4 +45,48 @@ public class SplitTheBillTests
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(() => splitter.SplitAmount(amount, numberOfPeople));
     }
+
+    [TestMethod]
+    public void CalculateTip_NullMealCosts_ThrowsArgumentNullException()
+    {
+        // Arrange
+        Dictionary<string, decimal> mealCosts = null;
+        float tipPercentage = 15;
+        SplitTheBill splitter = new SplitTheBill();
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentNullException>(() => splitter.CalculateTip(mealCosts, tipPercentage));
+    }
+
+    [TestMethod]
+    public void CalculateTip_TipPercentageLessThanZero_ThrowsArgumentException()
+    {
+        // Arrange
+        Dictionary<string, decimal> mealCosts = new Dictionary<string, decimal>
+        {
+            { "Person1", 20.00m },
+            { "Person2", 30.00m }
+        };
+        float tipPercentage = -10;
+        SplitTheBill splitter = new SplitTheBill();
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentException>(() => splitter.CalculateTip(mealCosts, tipPercentage));
+    }
+
+    [TestMethod]
+    public void CalculateTip_TipPercentageGreaterThan100_ThrowsArgumentException()
+    {
+        // Arrange
+        Dictionary<string, decimal> mealCosts = new Dictionary<string, decimal>
+        {
+            { "Person1", 20.00m },
+            { "Person2", 30.00m }
+        };
+        float tipPercentage = 110;
+        SplitTheBill splitter = new SplitTheBill();
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentException>(() => splitter.CalculateTip(mealCosts, tipPercentage));
+    }
 }
